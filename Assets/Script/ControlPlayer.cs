@@ -14,17 +14,17 @@ public class ControlPlayer : MonoBehaviour
     private bool miraDerecha = true; 
     private Vector3 velocidad = Vector3.zero;
     private Rigidbody2D rb;
-    private bool enElPiso;
+    public static bool enElPiso;
 
     public UnityEvent cuandoAterrizoEvento;
 
-    const float radioChequeo = 2f; //radio del circulo esPiso
+    const float radioChequeo = .2f; //radio del circulo esPiso
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>(); //obtiene personaje
 
-        if(cuandoAterrizoEvento == null){
+        if(null == cuandoAterrizoEvento ){
             cuandoAterrizoEvento = new UnityEvent();
 
         }
@@ -70,6 +70,7 @@ public class ControlPlayer : MonoBehaviour
         {
             enElPiso = false;
             rb.AddForce(new Vector2(0f, fuerzaSalto));
+            //rb.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
         }
     }
 

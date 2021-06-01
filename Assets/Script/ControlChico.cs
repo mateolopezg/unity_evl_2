@@ -12,13 +12,16 @@ public class ControlChico : MonoBehaviour
     bool salto = false;
 
 
+
     // Tomamos el valor presionado
     void Update()
     {
         movH = Input.GetAxisRaw("Horizontal") * veloCorrer;
         animator.SetFloat("Velocidad",Mathf.Abs(movH));
         
-        if(Input.GetButtonDown("Jump") || Input.GetKey ("w")){
+        //Input.GetKeyDown(KeyCode.UpArrow) || 
+        //if(Input.GetKey ("w") && ControlPlayer.enElPiso==true){
+        if(Input.GetButtonDown("Jump")){
             salto = true;
             animator.SetBool("EstoySaltando", true);
         }

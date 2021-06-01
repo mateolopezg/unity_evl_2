@@ -27,7 +27,7 @@ public class IAEnemiga : MonoBehaviour
     {
         //Distancia hasta el judadors
         float distJugador = Vector2.Distance(transform.position, player.position);
-        Debug.Log("Distancia del jugador: " + distJugador);
+        //Debug.Log("Distancia del jugador: " + distJugador);
 
         if(distJugador < rangoAgro && Mathf.Abs(distJugador) > 1)
         {
@@ -80,5 +80,15 @@ public class IAEnemiga : MonoBehaviour
         Vector3 laEscala = transform.localScale;
         laEscala.x *= -1;
         transform.localScale = laEscala;
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            Debug.Log("Daño al Chico");
+            Destroy(collision.gameObject);
+        }
+        
     }
 }
